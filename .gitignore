@@ -28,3 +28,7 @@ local.local.*
 
 # Ignore application configuration
 /config/application.yml
+
+node_modules/
+npm-debug.log
+tags
