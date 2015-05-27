@@ -22,6 +22,7 @@ gem 'konf'
 
 group :development do
   gem 'spring'
+  gem 'better_errors'
 end
 
 group :development, :test do
