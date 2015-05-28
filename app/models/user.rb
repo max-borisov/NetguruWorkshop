@@ -7,5 +7,10 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :products
 
-  validates :firstname, :lastname, presence: true, if: :persisted?
+  validates :firstname, :lastname, presence: true, unless: :has_email?
+
+  private
+    def has_email?
+      email.present?
+    end
 end
