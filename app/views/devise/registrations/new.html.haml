@@ -1,17 +1,11 @@
-%h2 Sign up
-
-= debug resource
-= debug resource_name
-= devise_mapping
-= devise_mapping.registerable?
-= controller_name
-
-= simple_form_for(resource, as: resource_name, url: user_registration_path(resource)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
+%div.col-md-6.col-md-offset-3
+  %h2.text-center Sign up  
+  = simple_form_for(resource, as: resource_name, url: user_registration_path(resource)) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, required: true, autofocus: true
+      = f.input :password, required: true
+      = f.input :password_confirmation, required: true
+    .form-actions
+      = f.button :submit, "Sign up"
+  = render "devise/shared/links"

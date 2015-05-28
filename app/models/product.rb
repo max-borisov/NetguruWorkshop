@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :reviews
 
   validates :description, :title, :price, presence: true
-  validates :price, numericality: true, format: { with: /\A\d{1}\.\d{1}\z/ }
+  validates :price, numericality: true, format: { with: /\A\d+(\.\d{2})?\z/ }
 
   def average_rating
     all_ratings = self.reviews.map{ |e| e.rating }
