@@ -23,6 +23,7 @@ gem 'konf'
 group :development do
   gem 'spring'
   gem 'better_errors'
+  gem 'jazz_hands'
 end
 
 group :development, :test do
