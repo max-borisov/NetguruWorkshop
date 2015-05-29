@@ -1,17 +1,14 @@
--# %p#notice= notice
+.row
+  .col-md-2.nav-button= link_to 'Back', categories_path, class: 'btn btn-primary pull-left'
+  .col-md-8
+    %h1.text-center Category: #{category.name}
+  .col-md-2.nav-button= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary pull-right'
 
-%p
-  %b Name:
-  = category.name
+%p.bg-info.text-center
+  Active products:
+  = category.products.collect{ |product| product.title }.join(', ')
 
+%br/
 %p
-  - category.products.each do |product|
-    = product.title
-
-%p
-  %h3 New product
+  %h3.text-center Add new product
   = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
