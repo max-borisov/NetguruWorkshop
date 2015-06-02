@@ -1,25 +1,21 @@
-%p#notice= notice
-%p#error= flash[:error]
+= render 'shared/navMenu', title: product.title, backUrl: category_path(category), nextBtn: { title: 'Edit', path: edit_category_product_path(category, product) }
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+- unless notice.nil?
+  .alert.alert-success= notice
+- unless flash[:error].nil?
+  .alert.alert-danger= flash[:error] 
 
-%p
-  %b Category
-  = product.category.name
+%dl.dl-horizontal.product-info
+  %dt Category:
+  %dd= product.category.name
 
-%h3 Reviews
+  %dt Description:
+  %dd= product.description
+
+  %dt Price:
+  %dd= number_to_currency(product.price)
+
+%h3.text-center.form-bottom Reviews
 = render 'reviews/form'
 
 = render reviews
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'

@@ -1,5 +1,6 @@
 @import "bootstrap";
 
+$errorColor: #A94442;
 .simple_form .required abbr {
   color: red;
 }
@@ -12,7 +13,56 @@
   padding-top: 25px;
 }
 
-.bg-info {
+.available-products {
+  font-size: 25px;
+}
+
+#error_explanation {
+  // width: 450px;
+  border: 2px solid #C00;
   padding: 10px;
+  margin: 0 0 20px 0;
+  background: #FEE;
+  font-size: 0.9em;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 7px 7px 7px 15px;
+    font-size: 1em;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul {
+    padding: 5px 0 0 20px;
+    margin: 0;
+
+    li {
+      list-style: square;
+    }
+  }
+}
+
+.field_with_errors {
+  label {
+    color: $errorColor;
+  }
+
+  .form-control {
+    border-color: $errorColor;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+}
+
+.product-info {
   font-size: 20px;
+  width: 350px;
+  margin: 0 auto;
+
+  dt {
+    padding-bottom: 10px;
+  }
 }

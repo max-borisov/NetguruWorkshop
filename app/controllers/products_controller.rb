@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   expose(:category)
   expose(:products)
   expose(:product)
