@@ -1,5 +1,7 @@
-class ProductsController < ApplicationController
-  
+class ProductsController < ApplicationController  
+  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :ensure_product_belongs_to_user, only: [:edit, :update, :destroy]
+
   expose(:category)
   expose(:products)
   expose(:product)
@@ -18,8 +20,8 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  def create
-    self.product = Product.new(product_params)
+  def create  
+    self.product = current_user.products.create(product_params)
 
     if product.save
       category.products << product
@@ -44,8 +46,13 @@ class ProductsController < ApplicationController
   end
 
   private
+    def product_params
+      params.require(:product).permit(:title, :description, :price, :category_id)
+    end
 
-  def product_params
-    params.require(:product).permit(:title, :description, :price, :category_id)
-  end
+    def ensure_product_belongs_to_user
+      if current_user != product.user_id
+        redirect_to category_product_path(category, product), error: 'Error'
+      end
+    end
 end
