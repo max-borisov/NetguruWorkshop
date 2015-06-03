@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  def create    
+  def create
     review = product.reviews.build(review_params)
     review.user_id = current_user.id
 
