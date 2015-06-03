@@ -1,6 +1,8 @@
 %blockquote
   %p= review.content
   %div.raty{:data => {:score => "#{review.rating}", :number => 5}}
+  - if user_signed_in? && review_belongs_to_current_user?(review)
+    %a{:class => 'glyphicon glyphicon-remove', :href => '#', :title => 'Delete review'}
 
 -# %p= review.content
 -# %p

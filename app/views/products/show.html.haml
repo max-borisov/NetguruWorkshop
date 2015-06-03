@@ -4,7 +4,7 @@
   .alert.alert-success.alert-big.text-center= notice
 
 - unless flash[:error].nil?
-  .alert.alert-danger= flash[:error] 
+  .alert.alert-danger= flash[:error]
 
 %dl.dl-horizontal.product-info
   %dt Category:
@@ -21,6 +21,6 @@
   = render 'reviews/form'
 
 - if product.reviews.any?
-  .col-md-12.text-center
+  .col-md-12.reviews-list.text-center
     %h3.text-center Reviews
     = render reviews

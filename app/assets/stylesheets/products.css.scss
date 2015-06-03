@@ -1,0 +1,20 @@
+.reviews-list {
+  blockquote {
+    &:hover {
+      border-left-color: #ccc;
+    }
+
+    position: relative;
+
+    a {
+      color: red;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -1,11 +1,13 @@
 .col-md-8.col-md-offset-2
-  = simple_form_for [category, product, review] do |f|
+  = simple_form_for [category, product, review] do |f|    
+    = debug review.errors.empty?
     - if review.errors.any?
       #error_explanation
         %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
         %ul
           - review.errors.full_messages.each do |msg|
             %li= msg
+
     .form-group
       = f.label :content
       = f.text_area :content, class: 'form-control'

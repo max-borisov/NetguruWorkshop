@@ -1,8 +1,18 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   expose(:review)
   expose(:product)
   expose(:category)
+
+  def index
+  end
+
+  def show
+  end
+
+  def new
+  end
 
   def edit
   end
