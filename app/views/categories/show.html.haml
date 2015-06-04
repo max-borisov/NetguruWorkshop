@@ -1,4 +1,9 @@
-= render 'shared/navMenu', title: category.name, backUrl: categories_path, nextBtn: { title: 'Edit', path: edit_category_path(category) }
+- if current_user.admin?
+  - nextBtn = { title: 'Edit', path: edit_category_path(category) }
+- else
+  - nextBtn = nil
+
+= render 'shared/navMenu', title: category.name, backUrl: categories_path, nextBtn: nextBtn
 
 - unless notice.nil?
   .alert.alert-success.alert-big.text-center= notice

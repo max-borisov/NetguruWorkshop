@@ -1,4 +1,9 @@
-= render 'shared/navMenu', title: product.title, backUrl: category_path(category), nextBtn: { title: 'Edit', path: edit_category_product_path(category, product) }
+- if product_belongs_to_current_user?(product)
+  - nextBtn = { title: 'Edit', path: edit_category_product_path(category, product) }
+-else
+  - nextBtn = nil
+
+= render 'shared/navMenu', title: product.title, backUrl: category_path(category), nextBtn: nextBtn
 
 - if notice
   .alert.alert-success.alert-big.text-center= notice
@@ -24,3 +29,9 @@
   .col-md-12.reviews-list.text-center
     %h3.text-center Reviews
     = render reviews
+
+- if product_belongs_to_current_user?(product)
+  .col-md-12
+    %hr/
+    .text-center
+      = button_to 'Delete', category_product_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-delete-product'

@@ -2,6 +2,6 @@
 	.col-md-2.nav-button= link_to 'Back', backUrl, class: 'btn btn-primary'
 	.col-md-8
 		%h1.text-center= title
-	- if user_signed_in? && defined?(nextBtn)
+	- if user_signed_in? && defined?(nextBtn) && !nextBtn.nil?
 		.col-md-2.nav-button.text-right= link_to nextBtn[:title], nextBtn[:path], class: 'btn btn-primary'
 %hr

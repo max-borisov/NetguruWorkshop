@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController  
   before_action :authenticate_user!, except: [:index, :show]
-  # before_action :ensure_product_belongs_to_user, only: [:edit, :update, :destroy]
+  before_action :ensure_product_belongs_to_user, only: [:edit, :update, :destroy]
+  helper_method :product_belongs_to_current_user?
 
   expose(:category)
   expose(:products)
@@ -45,14 +46,18 @@ class ProductsController < ApplicationController
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
   end
 
+  def product_belongs_to_current_user?(product)
+    current_user.id == product.user_id
+  end
+
   private
     def product_params
       params.require(:product).permit(:title, :description, :price, :category_id)
     end
 
     def ensure_product_belongs_to_user
-      if current_user != product.user_id
-        redirect_to category_product_path(category, product), error: 'Error'
+      unless product_belongs_to_current_user?(product)
+        redirect_to category_product_path(category, product), flash: { error: 'You do not have credentials to edit this product.' }
       end
     end
 end

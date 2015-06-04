@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :description, :title, :price, :user_id, presence: true
   validates :price, numericality: true, format: { with: /\A\d+(\.\d{2})?\z/ }
