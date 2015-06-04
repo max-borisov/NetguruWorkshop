@@ -1,21 +1,21 @@
 = render 'shared/navMenu', title: product.title, backUrl: category_path(category), nextBtn: { title: 'Edit', path: edit_category_product_path(category, product) }
 
-- unless notice.nil?
+- if notice
   .alert.alert-success.alert-big.text-center= notice
 
-- unless flash[:error].nil?
-  .alert.alert-danger= flash[:error]
+- if flash[:error]
+  .alert.alert-danger.alert-big.text-center= flash[:error]
 
 %dl.dl-horizontal.product-info
   %dt Category:
   %dd= product.category.name
-
+  
   %dt Description:
   %dd= product.description
 
   %dt Price:
   %dd= number_to_currency(product.price)
-  
+
 - if user_signed_in?
   %h3.text-center Add review
   = render 'reviews/form'
