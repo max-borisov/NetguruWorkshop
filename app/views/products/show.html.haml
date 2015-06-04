@@ -1,4 +1,4 @@
-- if product_belongs_to_current_user?(product)
+- if user_signed_in? && product_belongs_to_current_user?(product)
   - nextBtn = { title: 'Edit', path: edit_category_product_path(category, product) }
 -else
   - nextBtn = nil
@@ -30,7 +30,7 @@
     %h3.text-center Reviews
     = render reviews
 
-- if product_belongs_to_current_user?(product)
+- if user_signed_in? && product_belongs_to_current_user?(product)
   .col-md-12
     %hr/
     .text-center
