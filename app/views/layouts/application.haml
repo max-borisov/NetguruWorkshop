@@ -13,18 +13,29 @@
       .container-fluid
         .navbar-header
           %span.navbar-brand= link_to AppConfig.workshops_name, '/'
-        %p.navbar-text.navbar-right
-          - if user_signed_in?
-            %span
-              %strong
-                = current_user.email
-            = link_to 'Logout', destroy_user_session_path, method: :delete
-          - else
+        
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = image_tag user_gravatar(current_user.email, 40)
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  = link_to 'Profile', current_user
+                %li
+                  %a{:href => "#"} Change password
+                %li.divider
+                %li
+                  = link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          %p.navbar-text.navbar-right
             %span
               Hi, Stanger. Please,
               = link_to 'Login', new_user_session_path
               or
               = link_to 'Signup', new_user_registration_path    
+
     .container-fluid
       .row
         .col-md-8.col-md-offset-2

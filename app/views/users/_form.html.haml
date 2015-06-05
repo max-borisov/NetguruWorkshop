@@ -1,0 +1,16 @@
+= simple_form_for current_user do |f|
+  - if current_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(current_user.errors.count, "error")} prohibited this review from being saved:"
+      %ul
+        - current_user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.input :firstname, class: 'form-control'
+  .form-group
+    = f.input :lastname, class: 'form-control'
+  .form-group
+    = f.input :email, class: 'form-control'
+
+  = f.submit 'Save', class: 'btn btn-primary'
