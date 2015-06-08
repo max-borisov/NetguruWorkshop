@@ -1,4 +1,4 @@
-- if current_user.admin?
+- if user_signed_in? && current_user.admin?
   - nextBtn = { title: 'Edit', path: edit_category_path(category) }
 - else
   - nextBtn = nil

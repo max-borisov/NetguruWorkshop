@@ -8,16 +8,7 @@ class ProductsController < ApplicationController
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
-
-  def index
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
+  
   def create  
     self.product = current_user.products.create(product_params)
 

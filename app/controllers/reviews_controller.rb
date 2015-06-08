@@ -6,15 +6,6 @@ class ReviewsController < ApplicationController
   expose(:product)
   expose(:category)
 
-  def index
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
   def create
     self.review = product.reviews.build(review_params)
     review.user_id = current_user.id
