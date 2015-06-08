@@ -21,17 +21,20 @@
   %dt Price:
   %dd= number_to_currency(product.price)
 
-- if user_signed_in?
-  %h3.text-center Add review
-  = render 'reviews/form'
+.product-reviews-block
+  - if user_signed_in?
+    - unless product_has_reviews?(product)
+      %p.text-info.alert-big.text-center There are no reviews. Be the first reviewer !
+    %h3.text-center Add review
+    = render 'reviews/form'
 
-- if product.reviews.any?
-  .col-md-12.reviews-list.text-center
-    %h3.text-center Reviews
-    = render reviews
+  - if product_has_reviews?(product)
+    .col-md-12.reviews-list.text-center
+      %h3.text-center Reviews
+      = render reviews
 
-- if user_signed_in? && product_belongs_to_current_user?(product)
-  .col-md-12
-    %hr/
-    .text-center
-      = button_to 'Delete', category_product_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-delete-product'
+  - if user_signed_in? && product_belongs_to_current_user?(product)
+    .col-md-12
+      %hr/
+      .text-center
+        = button_to 'Delete', category_product_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-delete-product'

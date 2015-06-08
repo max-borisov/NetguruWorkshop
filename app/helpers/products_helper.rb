@@ -10,4 +10,8 @@ module ProductsHelper
       "#{user.firstname} #{user.lastname}"
     end
   end
+
+  def product_has_reviews?(product)
+    product.reviews.any?
+  end
 end
