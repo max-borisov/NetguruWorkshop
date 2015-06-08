@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.8'
+ruby '2.1.5'
 
 gem 'pg'
 gem 'draper'
@@ -39,4 +40,3 @@ group :test do
   gem 'database_cleaner'
 end
 
-ruby '2.1.5'

@@ -7,12 +7,12 @@
     = render 'form'
   .col-md-6
     %h4 Recent reviews
-    - if @recent_reviews.any?
+    - if @recent_reviews.nil?
+      .alert.alert-info.alert-big.text-center You do not have any reviews yet
+    - else
       %ul.list-unstyled.recent-reviews
         - @recent_reviews.each do |review|
           %li.clearfix
             %div= review.content
             %div.pull-left.raty{:data => {:score => review.rating, :number => 5}}
             %div.pull-left.review-date= format_date(review.created_at)
-    - else
-      .alert.alert-info.alert-big.text-center You do not have any reviews yet
