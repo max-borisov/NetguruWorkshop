@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
-    @recent_reviews = current_user.reviews.order(created_at: :desc).limit(5)
   end
 
   def update
