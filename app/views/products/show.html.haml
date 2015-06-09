@@ -11,15 +11,20 @@
 - if flash[:error]
   .alert.alert-danger.alert-big.text-center= flash[:error]
 
-%dl.dl-horizontal.product-info
-  %dt Category:
-  %dd= product.category.name
-  
-  %dt Description:
-  %dd= product.description
 
-  %dt Price:
-  %dd= number_to_currency(product.price)
+%table.table
+  %thead
+    %tr
+      %th.text-center Category
+      %th.text-center Description
+      %th.text-center Price
+  %tbody
+    %tr.text-center
+      %td= link_to product.category.name, category_path(category)
+      %td.text-left= product.description
+      %td
+        %span.product-price
+          = number_to_currency(product.price)
 
 .product-reviews-block
   - if user_signed_in?
