@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
 
     def ensure_product_belongs_to_user
       unless product_belongs_to_current_user?(product)
-        redirect_to category_product_path(category, product), flash: { error: 'You do not have credentials to edit this product.' }
+        redirect_to category_product_path(category, product), flash: { error: 'You are not allowed to edit this product.' }
       end
     end
 end
