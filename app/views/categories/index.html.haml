@@ -1,6 +1,9 @@
 %h1.text-center Listing categories
 - if categories.empty?
-  .alert.alert-info.alert-big.text-center There no any categories yet. But you can add some new ones.
+  .alert.alert-info.alert-big.text-center 
+    There no any categories yet.
+    -if user_signed_in?
+      But you can add some new ones.
 - else
   .col-md-6.col-md-offset-3
     %table.table.table-striped.table-hover
