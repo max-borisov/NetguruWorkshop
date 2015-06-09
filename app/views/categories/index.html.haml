@@ -1,24 +1,22 @@
 %h1.text-center Listing categories
+%hr
 - if categories.empty?
   .alert.alert-info.alert-big.text-center 
-    There no any categories yet.
+    There are no categories yet.
     -if user_signed_in?
       But you can add some new ones.
 - else
-  .col-md-6.col-md-offset-3
-    %table.table.table-striped.table-hover
-      %tbody
-        - categories.each do |category|
-          %tr
-            %td= category.name
-            %td.text-right
-              = link_to 'Show', category
-              - if user_signed_in? && current_user.admin?
-                &#47;
-                = link_to 'Edit', edit_category_path(category)
-                &#47;
-                = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-    
+  .row
+    - categories.each do |category|
+      .col-md-3.col-md-offset-1.category-item.text-center
+        %h3
+          = link_to category.name, category
+        %div.sub-header= "(has #{pluralize(category.products.count, 'product')})"
+        - if user_signed_in? && current_user.admin?
+          %div.action-buttons
+            = link_to '', edit_category_path(category), title: 'Edit', class: 'glyphicon glyphicon-edit pull-left btn-category-edit'
+            = link_to '', category, title: 'Delete', method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-remove pull-right btn-category-delete'
+
 - if user_signed_in? && current_user.admin?
   .col-md-6.col-md-offset-3
     %hr
