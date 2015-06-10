@@ -11,9 +11,9 @@
 - if category.products.empty?
   .alert.alert-info.alert-big.text-center There are no any products yet.
 - else
-  %h4.text-center Active products:
+  %h4.text-center Available products:
   .col-md-6.col-md-offset-3
-    %table.table.table-striped.table-hover
+    %table.table.table-hover
       %tbody
         - category.products.each do |product|
           %tr

@@ -10,6 +10,6 @@ class ReviewDecorator < Draper::Decorator
   end
 
   def created_at
-    object.created_at.to_s(:long)
+    object.created_at.strftime("%d-%m-%Y")
   end
 end
