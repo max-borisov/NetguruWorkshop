@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!  
+  expose_decorated(:reviews, ancestor: :current_user)
 
   def show
   end

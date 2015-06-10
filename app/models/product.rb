@@ -10,4 +10,8 @@ class Product < ActiveRecord::Base
     all_ratings = self.reviews.map{ |e| e.rating }
     all_ratings.sum.to_f / all_ratings.size
   end
+
+  def has_reviews?
+    reviews.any?
+  end
 end

@@ -11,7 +11,6 @@
 - if flash[:error]
   .alert.alert-danger.alert-big.text-center= flash[:error]
 
-
 %table.table
   %thead
     %tr
@@ -28,12 +27,12 @@
 
 .product-reviews-block
   - if user_signed_in?
-    - unless product_has_reviews?(product)
+    - unless product.has_reviews?
       %p.text-info.alert-big.text-center There are no reviews. Be the first reviewer !
     %h3.text-center Add review
     = render 'reviews/form'
 
-  - if product_has_reviews?(product)
+  - if product.has_reviews?
     .col-md-12.reviews-list.text-center
       %h3.text-center Reviews
       = render reviews
