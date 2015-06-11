@@ -10,4 +10,13 @@ describe ReviewDecorator do
       expect(review.author).to eq 'John Doe'
     end
   end
+
+=begin
+describe '#created_at' do
+    it 'changes format for created_at' do
+      expect(review.decorate.created_at).to match(/\d{2}-\d{2}-\d{4}/)
+    end
+  end
+=end
+
 end
