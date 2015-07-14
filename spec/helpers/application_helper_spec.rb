@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ApplicationHelper, :type => :helper do
   describe "user_gravatar" do
-    let(:gravatar) { user_gravatar('max@bk.ru', 150) }
+    let(:gravatar) { user_gravatar('max@bk.ru', 300) }
 
     it "has gravatar domain name" do
       expect(gravatar).to include('www.gravatar.com')

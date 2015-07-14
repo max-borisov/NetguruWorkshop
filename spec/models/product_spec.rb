@@ -32,5 +32,14 @@ describe Product do
         expect(product.average_rating).to eq 2.5
       end
     end
+
+    describe '#belongs_to_user?' do
+      let(:user)    { create(:user) }
+      let(:product) { create(:product, user: user) }
+
+      it 'returnes true if product belongs to user' do
+        expect(product.belongs_to_user?(user)).to be true
+      end
+    end
   end
 end
