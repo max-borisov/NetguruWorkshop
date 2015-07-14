@@ -11,49 +11,49 @@ nokia_lumia_830 = Product.where(title: 'Nokia Lumia 830').pluck(:id).first
 
 Review.create!([
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 5,
         product_id: i_phone_5s,
         user_id: matt
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 4,
         product_id: i_phone_5s,
         user_id: jack
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 4,
         product_id: i_phone_5s,
         user_id: tom
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 3,
         product_id: i_phone_6,
         user_id: matt
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 4,
         product_id: apple_watch,
         user_id: jack
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 5,
         product_id: apple_watch,
         user_id: tom
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 5,
         product_id: htc_one_m9,
         user_id: tom
     },
     {
-        content: Faker::Lorem.paragraph(rand(1..5)),
+        content: FFaker::Lorem.paragraph(rand(1..5)),
         rating: 3,
         product_id: htc_one_m9,
         user_id: jack
