@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_admin_status, except: [:index, :show]
+  before_action :admin_only, except: [:index, :show]
 
   expose(:categories)
   expose(:category)
@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
   def show
   end
-  
+
   def edit
   end
 
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def check_admin_status
+    def admin_only
       redirect_to new_user_session_path unless current_user.admin?
     end
 

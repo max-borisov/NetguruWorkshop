@@ -1,15 +1,14 @@
-class ProductsController < ApplicationController  
+class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_product_belongs_to_user, only: [:edit, :update, :destroy]
-  helper_method :product_belongs_to_current_user?
 
   expose(:category)
   expose(:products)
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
-  
-  def create  
+
+  def create
     self.product = current_user.products.create(product_params)
 
     if product.save
@@ -28,14 +27,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
   def destroy
     product.destroy
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
-  end
-
-  def product_belongs_to_current_user?(product)
-    current_user.id == product.user_id
   end
 
   private
@@ -44,8 +38,8 @@ class ProductsController < ApplicationController
     end
 
     def ensure_product_belongs_to_user
-      unless product_belongs_to_current_user?(product)
-        redirect_to category_product_path(category, product), flash: { error: 'You are not allowed to edit this product.' }
+      unless product.belongs_to_user?(current_user)
+        redirect_to category_product_path(category, product), flash: { error: 'You are not allowed to edit this product' }
       end
     end
 end

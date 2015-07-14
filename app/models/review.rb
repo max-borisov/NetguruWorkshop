@@ -1,6 +1,5 @@
 class Review < ActiveRecord::Base
   default_scope { order(created_at: :asc) }
-  # scope :recent, -> { limit(5) }
 
   belongs_to :product
   belongs_to :user

@@ -11,8 +11,7 @@ class ReviewsController < ApplicationController
     review.user_id = current_user.id
 
     if review.save
-      product.reviews << review
-      redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
+      redirect_to category_product_url(product.category, product), notice: 'Review was successfully created'
     else
       render action: 'new'
     end
@@ -20,7 +19,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review.destroy
-    redirect_to category_product_path(product.category, product), notice: 'Review was successfully destroyed.'
+    redirect_to category_product_path(product.category, product), notice: 'Review was successfully destroyed'
   end
 
   private
@@ -30,7 +29,7 @@ class ReviewsController < ApplicationController
 
     def ensure_review_belongs_to_user
       if current_user.id != review.user_id
-        redirect_to category_product_path(product.category, product), flash: { error: 'You do not have credentials to delete that review.' }
+        redirect_to category_product_path(product.category, product), flash: { error: 'You do not have credentials to delete that review' }
       end
     end
 end
