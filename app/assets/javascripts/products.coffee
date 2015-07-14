@@ -1,7 +1,7 @@
 $ ->
   $('div.raty').raty
     readOnly: true
-    path: '/assets'
+    # path: '/assets'
     number: ->
       $(@).attr('data-number')
     score: ->

@@ -15,6 +15,6 @@
           %li.clearfix
             %div= review.content
             .review-data
-              %div.pull-left.raty{:data => {:score => review.rating, :number => 5}}
+              %div.pull-left.raty{ data: { score: review.rating, number: 5} }
               %div.pull-left= review.created_at
               %div.pull-left= link_to review.product.title, category_product_path(review.product.category, review.product)
