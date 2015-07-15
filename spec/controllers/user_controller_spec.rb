@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe UsersController do
+  xit 'destroy' do
+
+  end
+
   describe 'PUT update' do
     let(:user) {create(:user)}
 

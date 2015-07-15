@@ -17,7 +17,7 @@
       %tbody
         - category.products.each do |product|
           %tr
-            %td= link_to product.title, category_product_path(category.id, product.id)
+            %td= link_to product.title, category_product_path(category, product)
             %td.text-right= number_to_currency(product.price)
 
 - if user_signed_in?

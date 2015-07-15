@@ -1,0 +1,22 @@
+.row
+  .col-md-5.text-center
+    = image_tag(user_gravatar(current_user[:email], 150))
+    %p
+      = button_to 'Delete account', user_path, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-md btn-danger'
+  .col-md-7
+    %dl.dl-horizontal.user-profile
+      %dt Firstname:
+      %dd
+        %strong= h(current_user[:firstname])
+      %dt Lastname:
+      %dd
+        %strong= h(current_user[:lastname])
+      %dt Email:
+      %dd
+        %strong= h(current_user[:email])
+      %dt Registered:
+      %dd= current_user[:created_at].to_formatted_s(:long)
+.row
+  %h4 Products
+  %ul
+    =render partial: 'product', collection: current_user.products

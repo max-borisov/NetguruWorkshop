@@ -17,3 +17,17 @@
     }
   }
 }
+.user-profile {
+  font-size: 1.1em;
+  padding-left: 0;
+
+  dt {
+    font-weight: normal;
+    width: 80px;
+  }
+
+  dd {
+    padding-bottom: 10px;
+    margin-left: 95px;
+  }
+}
