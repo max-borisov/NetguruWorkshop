@@ -64,13 +64,16 @@ describe CategoriesController do
       end
     end
 
-    describe 'GET show' do
-      it 'exposes the requested category' do
-        category = Category.create! valid_attributes
-        get :show, { id: category.to_param }, valid_session
-        expect(controller.category).to eq(category)
-      end
-    end
+    # There is no method Show for the CategoryContoller.
+    # Category's content is available on the products page.
+    #
+    # describe 'GET show' do
+    #   it 'exposes the requested category' do
+    #     category = Category.create! valid_attributes
+    #     get :show, { id: category.to_param }, valid_session
+    #     expect(controller.category).to eq(category)
+    #   end
+    # end
 
     describe 'GET new' do
       it 'exposes a new category' do
@@ -103,7 +106,7 @@ describe CategoriesController do
 
         it 'redirects to the created category' do
           post :create, { category: valid_attributes }, valid_session
-          expect(response).to redirect_to(Category.last)
+          expect(response).to redirect_to(categories_path)
         end
       end
 
@@ -137,7 +140,7 @@ describe CategoriesController do
 
         it 'redirects to the category' do
           put :update, { :id => category.to_param, :category => valid_attributes }, valid_session
-          response.should redirect_to(category)
+          response.should redirect_to(category_products_path(category))
         end
       end
 

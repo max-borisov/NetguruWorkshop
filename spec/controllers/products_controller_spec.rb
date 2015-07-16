@@ -56,7 +56,7 @@ describe ProductsController do
 
         it 'renders error message' do
           get :edit, { id: product.to_param, category_id: category.to_param }
-          expect(controller.flash[:error]).to eq 'You are not allowed to edit this product'
+          expect(controller.flash[:error]).to eq 'You are not allowed to fulfill this action'
         end
       end
     end
@@ -75,7 +75,7 @@ describe ProductsController do
 
         it 'renders error message' do
           put :update, { id: product.to_param, product: { 'title' => 'MyString' }, category_id: category.to_param }
-          expect(controller.flash[:error]).to eq 'You are not allowed to edit this product'
+          expect(controller.flash[:error]).to eq 'You are not allowed to fulfill this action'
         end
       end
     end
@@ -231,7 +231,7 @@ describe ProductsController do
 
       it 'redirects to the category page' do
         delete :destroy, { id: product.to_param, category_id: category.to_param }
-        expect(response).to redirect_to(category_url(category))
+        expect(response).to redirect_to(category_products_path(category))
       end
     end
 

@@ -1,4 +1,4 @@
-= render 'shared/navMenu', title: "Edit #{ resource_name.to_s.humanize }"
+= render 'shared/navMenu', title: "Edit #{ resource_name.to_s.humanize }", backUrl: user_path(current_user)
 %div.col-md-8.col-md-offset-2
   = simple_form_for(resource, as: resource_name, url: user_path(current_user), html: { method: :put }) do |f|
     = f.error_notification
