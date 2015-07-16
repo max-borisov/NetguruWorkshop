@@ -1,8 +1,7 @@
 .row
   .col-md-5.text-center
-    = image_tag(user_gravatar(current_user[:email], 150))
     %p
-      = button_to 'Delete account', user_path, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-md btn-danger'
+    = image_tag(user_gravatar(current_user[:email], 150))
   .col-md-7
     %dl.dl-horizontal.user-profile
       %dt Firstname:
@@ -16,7 +15,11 @@
         %strong= h(current_user[:email])
       %dt Registered:
       %dd= current_user[:created_at].to_formatted_s(:long)
+    %p
+      = link_to 'Edit', edit_user_registration_path, class: 'btn btn-md btn-success pull-left'
+      = button_to 'Delete', user_path, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-md btn-danger pull-right'
 .row
-  %h4 Products
-  %ul
-    =render partial: 'product', collection: current_user.products
+  %hr/
+  %h4.text-center Products you have added
+  .row
+  =render partial: 'product', collection: current_user.products

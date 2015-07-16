@@ -4,12 +4,8 @@ class CategoriesController < ApplicationController
 
   expose(:categories)
   expose(:category)
-  expose(:product) { Product.new }
 
   def index
-  end
-
-  def show
   end
 
   def edit
@@ -19,23 +15,23 @@ class CategoriesController < ApplicationController
     self.category = Category.new(category_params)
 
     if category.save
-      redirect_to category, notice: 'Category was successfully created.'
+      redirect_to categories_path, notice: 'Category was successfully created'
     else
-      render action: 'new'
+      render :new
     end
   end
 
   def update
     if category.update(category_params)
-      redirect_to category, notice: 'Category was successfully updated.'
+      redirect_to category_products_path(category), notice: 'Category was successfully updated'
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
   def destroy
     category.destroy
-    redirect_to categories_url, notice: 'Category was successfully destroyed.'
+    redirect_to categories_url, notice: 'Category was successfully destroyed'
   end
 
   private

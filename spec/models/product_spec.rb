@@ -8,7 +8,7 @@ describe Product do
     it { should validate_presence_of :user_id }
     it { should belong_to :user }
     it { should belong_to :category }
-    it { should have_many :reviews }
+    it { should have_many(:reviews).dependent(:destroy) }
 
     describe '#price' do
       let(:product) { build(:product, price: 1.234) }

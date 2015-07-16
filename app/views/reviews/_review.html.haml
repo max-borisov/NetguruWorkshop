@@ -1,6 +1,6 @@
 %blockquote
   %p= review.content
-  %div.raty{:data => {:score => "#{review.rating}", :number => 5}}
-  %footer.text-left by #{review.author}
-  - if user_signed_in? && review.belongs_to_user?(current_user)
-    = link_to content_tag(:span, '', class: 'glyphicon glyphicon-remove delete-review-link'), category_product_review_path(category, product, review), method: :delete, remote: false, :title => 'Delete review', data: {confirm: 'Are you sure?'}
+  %div.raty{ data: { score: "#{ review.rating }", number: 5 } }
+  %footer.text-left by #{ review.author }
+  - if user_signed_in? && (review.belongs_to_user?(current_user) || current_user.admin?)
+    = link_to content_tag(:span, '', class: 'glyphicon glyphicon-remove delete-review-link'), category_product_review_path(category, product, review), method: :delete, remote: false, :title => 'Delete review', data: { confirm: 'Are you sure?' }

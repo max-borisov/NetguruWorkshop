@@ -1,23 +1,19 @@
 %h1.text-center Listing categories
 %hr
+
+- unless notice.nil?
+  .alert.alert-success.alert-big.text-center= notice
+
 - if categories.empty?
-  .alert.alert-info.alert-big.text-center 
+  .alert.alert-info.alert-big.text-center
     There are no categories yet.
     -if user_signed_in?
       But you can add some new ones.
 - else
   .row
-    - categories.each do |category|
-      .col-md-3.col-md-offset-1.category-item.text-center
-        %h3
-          = link_to category.name, category
-        %div.sub-header= "(has #{pluralize(category.products.count, 'product')})"
-        - if user_signed_in? && current_user.admin?
-          %div.action-buttons
-            = link_to '', edit_category_path(category), title: 'Edit', class: 'glyphicon glyphicon-edit pull-left btn-category-edit'
-            = link_to '', category, title: 'Delete', method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-remove pull-right btn-category-delete'
+    = render categories
 
 - if user_signed_in? && current_user.admin?
   .col-md-6.col-md-offset-3
     %hr
-    .text-center= link_to 'New Category', new_category_path, class: 'btn btn-primary'
+    .text-center= link_to 'New Category', new_category_path, class: 'btn btn-success btn-lg'

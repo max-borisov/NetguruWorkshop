@@ -1,3 +1,6 @@
-= render 'shared/navMenu', title: 'Editing product', backUrl: category_product_path(category, product), nextBtn: { title: 'Show', path: category_product_path(category, product) }
-
-= render 'form'
+= render 'shared/navMenu', title: 'Editing product', nextBtn: { title: 'Show', path: category_product_path(category, product) }
+.row
+  .col-md-4
+    %p= image_tag product.preview.url(:medium), alt: product.title, title: product.title
+  .col-md-8
+    = render 'form'

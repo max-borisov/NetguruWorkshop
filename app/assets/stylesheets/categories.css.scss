@@ -1,9 +1,13 @@
 .category-item {
-  background: #eee;
-  padding: 0 0 20px 0;
+  position: relative;
+  height: 110px;
 
   &:hover {
     background: #efe;
+
+    .glyphicon-remove {
+      display: block;
+    }
   }
 
   h3 {
@@ -15,23 +19,17 @@
     font-size: 18px;
   }
 
-  .action-buttons {
-    a {
-      &:hover {
-        text-decoration: none;
-      }
-      
-      font-size: 20px;
+  .glyphicon-remove {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    color: red;
+    margin-right: 20px;
+    font-size: 20px;
 
-      &.btn-category-delete {
-        color: red;
-        margin-right: 25px;
-      }
-      &.btn-category-edit {
-        color: green;
-        margin-left: 25px;
-      }
+    &:hover {
+      text-decoration: none;
     }
-
   }
 }

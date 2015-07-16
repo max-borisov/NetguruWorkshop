@@ -1,21 +1,20 @@
-%h1 Listing products
+- if user_signed_in? && current_user.admin?
+  - nextBtn = { title: 'Edit', path: edit_category_path(category) }
+- else
+  - nextBtn = nil
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
+= render 'shared/navMenu', title: category.name, nextBtn: nextBtn
 
-  - products.each do |product|
-    %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
-      %td= link_to 'Edit', edit_category_product_path(product.category, product)
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+- if notice
+  .alert.alert-success.alert-big.text-center= notice
 
-%br
+- if user_signed_in?
+  %p.text-center= link_to 'Add new product', new_category_product_path(category), class: 'btn btn-success btn-lg'
+  %br
+
+- if category.products.empty?
+  .alert.alert-info.alert-big.text-center There are no any products yet
+- else
+  .row
+    = render partial: 'product', collection: category.products
+

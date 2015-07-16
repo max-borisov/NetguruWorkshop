@@ -1,9 +1,9 @@
 %h1.text-center Profile
-%hr
+%hr/
 .row
+  - if notice
+    .alert.alert-info.alert-big.text-center= notice
   .col-md-6.profile-edit
-    - if notice
-      .alert.alert-info.alert-big.text-center= notice
     = render 'profile'
   .col-md-6
     = render 'reviews', reviews: reviews

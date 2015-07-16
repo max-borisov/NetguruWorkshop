@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :ensure_review_belongs_to_user, only: [:destroy]
+  before_action :check_access, only: [:destroy]
 
   expose(:review)
   expose(:product)
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created'
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -27,8 +27,8 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:content, :rating)
     end
 
-    def ensure_review_belongs_to_user
-      if current_user.id != review.user_id
+    def check_access
+      unless (current_user.id == review.user_id || current_user.admin?)
         redirect_to category_product_path(product.category, product), flash: { error: 'You do not have credentials to delete that review' }
       end
     end

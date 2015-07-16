@@ -8,7 +8,7 @@ gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'devise'
-gem 'simple_form', '~> 3.1.0rc'
+gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
 gem 'sass-rails', github: 'rails/sass-rails'
@@ -20,10 +20,11 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'spring'
-  gem 'better_errors'
+  # gem 'better_errors'
   # gem 'jazz_hands'
 end
 
