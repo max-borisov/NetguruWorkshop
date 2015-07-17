@@ -32,3 +32,6 @@ local.local.*
 node_modules/
 npm-debug.log
 tags
+
+.travis.ym.base
+*.yml-2
