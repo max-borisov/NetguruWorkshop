@@ -4,10 +4,10 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['API_SECRET'] %>
+    secure: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET'] %>
   run:
     - 'rake db:migrate'
-  app: <%= ENV['HEROKU_APP_NAME'] %>
+  app: <%= ENV['HEROKU_NETGURU_WORKSHOP_APP_NAME'] %>
   on:
     repo: max-borisov/NetguruWorkshop
 before_script:
