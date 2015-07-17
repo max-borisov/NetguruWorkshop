@@ -35,6 +35,7 @@ class CategoriesController < ApplicationController
   end
 
   private
+
     def admin_only
       redirect_to new_user_session_path unless current_user.admin?
     end
