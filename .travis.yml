@@ -3,7 +3,7 @@ rvm:
   - 2.1.5
 deploy:
   provider: heroku
-  api_key: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET'] %>
+  api_key: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET_SECURE'] %>
   run:
     - 'rake db:migrate'
   app: <%= ENV['HEROKU_NETGURU_WORKSHOP_APP_NAME'] %>
