@@ -4,7 +4,7 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET'] %>
+    secure: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET_SECURE'] %>
   run:
     - 'rake db:migrate'
   app: <%= ENV['HEROKU_NETGURU_WORKSHOP_APP_NAME'] %>
@@ -14,7 +14,5 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
   - bundle exec rake db:setup
-  - bundle exec rake db:test:prepare
-  - bundle exec rake db:seed
 script:
   - bundle exec rspec spec/ -f d
