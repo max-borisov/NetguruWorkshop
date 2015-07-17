@@ -4,10 +4,10 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: gdFS9eesvUdHS5JGOe/HZTlvRT0vRBm+uHqHae43/YbrEXPm3oZyfTb0e+9VX6GkleJiNkPR2+vFPzI0BXbcTQNKNyodkJqSjLsDb0HIbUktoZ022RYpPnmMyUP/MVer0bC7tjXZxH90dMDAzBSokii90gfH4wqkNH9r0vrg0x14C4U7b3huVd5YvkKtI+v098f1ZgjS+yO8pTlCWf1yKjUZUKB7mkr6jjk12MNCoACMBhF4z8pnN2PeZfdPDD04l/VakAcSGsEuFcgFOuVCSW7VdP6QAWYH7DuWqpS7U9etMD8hAOPa5c3+Y3kxGlh9M9HWJfoTtKt/srr4bVgdQOFEZZluZ1aIQ4A1mMjEoQNpWHo0ARe0tdE5DVuAvztrUBUamNVv563EFcL5RN+r1qUecrunGVbcP39n8MYQkh5kGkBkJ3QaIWuGgvS1G+unK8Bhn/3lrMofv0PUwTIp64jDFNie1jnEACFSkSZAfDF7V7taWiAB4Cd81bndeTPMSpufIdFheHNsG0HUUfsL3RZkhXf5ajRNWCCKMySYiJ8RCR7UjgrsAz5rEhJXYROFGrgsrJ6uuo+fGMMgqo4I+Jzuxc+ATDlOTNXyc1Udc3zm6JK+M87AqlNVBcpqedoG3X9Z/m0CpH2f+zxorSIyiIL1wBeXc2QJMPgu1Aywfrs=
+    secure: <%= ENV['HEROKU_NETGURU_WORKSHOP_API_SECRET_SECURE'] %>
   run:
   - rake db:migrate
-  app: <%= ENV['HEROKU_NETGURU_WORKSHOP_APP_NAME'] %>
+  app: netguru-workshop-july-warsaw
   on:
     repo: max-borisov/NetguruWorkshop
 before_script:
