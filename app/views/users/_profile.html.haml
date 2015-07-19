@@ -14,12 +14,15 @@
       %dd
         %strong= h(current_user[:email])
       %dt Registered:
-      %dd= current_user[:created_at].to_formatted_s(:long)
+      %dd= user.created_at
     %p
       = link_to 'Edit', edit_user_registration_path, class: 'btn btn-md btn-success pull-left'
       = button_to 'Delete', user_path, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-md btn-danger pull-right'
 .row
   %hr/
-  %h4.text-center Products you have added
-  .row
-  =render partial: 'product', collection: current_user.products
+  - if current_user.products.empty?
+    .alert.alert-info.alert-big.text-center You have not added any product yet
+  - else
+    %h4.text-center Products you have added
+    .row
+      =render partial: 'product', collection: current_user.products

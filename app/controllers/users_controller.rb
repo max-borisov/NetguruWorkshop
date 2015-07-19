@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_access
   expose_decorated(:reviews, ancestor: :current_user)
+  expose_decorated(:user)
 
   def destroy
     current_user.destroy
