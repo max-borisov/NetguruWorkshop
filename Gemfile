@@ -24,8 +24,6 @@ gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'spring'
-  # gem 'better_errors'
-  # gem 'jazz_hands'
 end
 
 group :production do
@@ -43,5 +41,5 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'codeclimate-test-reporter', require: nil
 end
-
