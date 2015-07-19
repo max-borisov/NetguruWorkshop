@@ -35,3 +35,4 @@ tags
 
 .travis.ym.base
 *.yml-2
+*.base

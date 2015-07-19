@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+- 2.1.5
+deploy:
+  provider: heroku
+  api_key:
+    secure: Fh2d1o2sic0uNobpPKbsz+RMIivp4vIzxr+T5pCQqUkg4/yoBEk+ZD6wEy3/X2Th6XDQaajYVDnvsh6NriX5RVo37GUhbnXoFj4Qx9yT/2zOBXOTwTt4bAA0BcYN/upBvMd1ipkCiMe34+/pk89yatDtCcapNsIb39Cfcibkp9kUQuQiHnEBvfZ/PSxpm5gtzTbGLcKoV8Xj28ttlu7q7Aznz3ITE6AlMWKhcXlWQCW/9nc20gC0+lJ32unUz1GF1sW0wLntEK0PWvd8QYSlIgie8FAeJ3ZURzcIB5VZkHrmgXdMyyL/m97NRQDZh5kwyQlmzEzCbDpT48Lj/8zYIqBsqBAO7RFgUkY7gTxp55hlEi6lLxuT2dSqA5gYyWj1OpmdusHNFpYEM8UQNZGe19eh/4KusPIEgLhFjCktKgk2t/MQarUVGInPSLlMA6etDAZvGsNO+VtMqfdkTMj+Hlnj5ilzxgVjOzPHN4Jf97Vw6tKF0lfLqXH0mo+Agq50Rmbvg1ntep2tedK439naFAm1oWQ12Z/LaTcG8MA15gj8doYvFxQT1n1V6Bo3/wjbJ7A4+2LcKCOWL2IHOk4zKPVVqaib/h9gqg6gMX+iYmLAR15Y00rPUCLphDShq4lounHF53W9Jp0Bz4KcDnc1A4WojpBZ3ORL++2F6wD2ulI=
+  app: netguru-workshop-july-warsaw
+  on:
+    repo: max-borisov/NetguruWorkshop
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- bundle exec rake db:setup
+script:
+- bundle exec rspec spec/
