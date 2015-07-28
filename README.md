@@ -2,7 +2,7 @@ Netguru workshop application
 ===
 [![Build Status](https://travis-ci.org/max-borisov/NetguruWorkshop.svg?branch=master)](https://travis-ci.org/max-borisov/NetguruWorkshop) [![Code Climate](https://codeclimate.com/github/max-borisov/NetguruWorkshop/badges/gpa.svg)](https://codeclimate.com/github/max-borisov/NetguruWorkshop) [![Test Coverage](https://codeclimate.com/github/max-borisov/NetguruWorkshop/badges/coverage.svg)](https://codeclimate.com/github/max-borisov/NetguruWorkshop/coverage)
 
-Working app is available on [Heroku](https://netguru-workshop-july-warsaw.herokuapp.com/).
+## [Demo on heroku](https://netguru-workshop-july-warsaw.herokuapp.com/)
 
 There are 5 predefined user accounts you can use to login:
 * `tom@gmail.com`
